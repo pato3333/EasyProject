@@ -86,6 +86,7 @@ class Task(object):
         self.input_title = title
         self.input_notes = notes
 
+
 class _BagIterator(object):
     def __init__(self, container):
         self.container = container
