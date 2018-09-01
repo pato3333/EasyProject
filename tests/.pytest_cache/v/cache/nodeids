@@ -9,5 +9,8 @@
   "test_day_of_month.py::TestDay_of_month::test_days_of_month",
   "test_is_year_leap.py::TestIs_year_leap::test_is_year_leap",
   "test_project.py::TestProject::test_is_task",
-  "test_project.py::TestProject::test_project_method"
+  "test_project.py::TestProject::test_project_method",
+  "test_projectReader.py::TestProjectReader::test_read",
+  "test_string_to_date.py::TestString_to_date::test_string_to_date",
+  "test_task_record_to_task.py::Test_task_record_to_task::test_task_record_to_task"
 ]
