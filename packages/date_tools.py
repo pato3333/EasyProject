@@ -82,9 +82,15 @@ class Date(object):
 
 class Task(object):
     def __init__(self, date, title, notes):
+        assert len(notes) < 60, "You can't write more than 60 character"
         self.input_date = date
-        self.input_title = title
+        self.input_title = title.upper()
         self.input_notes = notes
+
+    def __str__(self):
+        record = "\n%s >>>>> '%s'\n" % (self.input_date, self.input_title)
+        description = "\n'%s'\n" % self.input_notes
+        return record + "-" * 60 + description
 
 
 class _BagIterator(object):
@@ -132,7 +138,7 @@ class Project(object):
 
         self.from_date = from_date
         self.to_date = to_day
-        self.name = name
+        self.name = name.upper()
         self.description = None
         self.tasks = Bag()
 
@@ -145,7 +151,22 @@ class Project(object):
     def add_task(self, new_task):
         self.tasks.add(new_task)
 
+    def __len__(self):
+        return len(self.tasks)
+
+    def __str__(self):
+        title = self.name + " <<<<<<<<<<<<<<" + "\n"
+        if self.__len__() == 0:
+            task = "No tasks at all\n"
+        else:
+            task = self.print_task_all()
+        return title + task
+
     def remove_task(self, task):
         self.tasks.remove(task)
 
-
+    def print_task_all(self):
+        str_task = "Tasks:"
+        for x in self.tasks:
+            str_task += str(x)
+        return str_task
