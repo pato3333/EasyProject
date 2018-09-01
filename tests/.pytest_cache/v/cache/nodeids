@@ -1,4 +1,13 @@
 [
   "test_bag.py::TestBag::test_add",
-  "test_bag.py::TestBag::test_remove"
+  "test_bag.py::TestBag::test_remove",
+  "test_date.py::TestDate::test_day_name",
+  "test_date.py::TestDate::test_day_number_week",
+  "test_date.py::TestDate::test_dif_day",
+  "test_date.py::TestDate::test_month_name",
+  "test_date.py::TestDate::test_print_julian",
+  "test_day_of_month.py::TestDay_of_month::test_days_of_month",
+  "test_is_year_leap.py::TestIs_year_leap::test_is_year_leap",
+  "test_project.py::TestProject::test_is_task",
+  "test_project.py::TestProject::test_project_method"
 ]

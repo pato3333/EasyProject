@@ -80,6 +80,15 @@ class Date(object):
         return self.to_julian_day() > other.to_julian_day()
 
 
+def _date_task(task):
+    """
+    Return the date of the task
+    :param task
+    :return: the date of the task
+    """
+    return task.date
+
+
 class Task(object):
     def __init__(self, date, title, notes):
         assert len(notes) < 60, "You can't write more than 60 character"
@@ -91,6 +100,12 @@ class Task(object):
         record = "\n%s >>>>> '%s'\n" % (self.input_date, self.input_title)
         description = "\n'%s'\n" % self.input_notes
         return record + "-" * 60 + description
+
+    def title(self):
+        return self.input_title
+
+    def date(self):
+        return self.input_date
 
 
 class _BagIterator(object):
@@ -170,3 +185,26 @@ class Project(object):
         for x in self.tasks:
             str_task += str(x)
         return str_task
+
+    def _get_task_for_title(self, title):
+        real_title = title.upper()
+        for x in self.tasks:
+            if x.title() == real_title:
+                return x
+            else:
+                return None
+
+    def is_task(self, title):
+        """
+        Verified that the task with title: title is in the project
+        :param title: title of the task
+        :return: True is the task with name Title is in the project, False if it isn't
+        """
+        task = self._get_task_for_title(title)
+        if task in self.tasks:
+            return True
+        else:
+            return False
+
+    def get_name(self):
+        return self.name

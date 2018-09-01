@@ -1,6 +1,1 @@
-{
-  "test_day_of_month.py::TestCase": true,
-  "test_day_of_month.py::TestDay_of_month": true,
-  "test_is_year_leap.py::TestCase": true,
-  "test_is_year_leap.py::TestIs_year_leap": true
-}
+{}
