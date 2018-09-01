@@ -86,6 +86,44 @@ class Task(object):
         self.input_title = title
         self.input_notes = notes
 
+class _BagIterator(object):
+    def __init__(self, container):
+        self.container = container
+        self.current_index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current_index < len(self.container):
+            item = self.container[self.current_index]
+            self.current_index += 1
+            return item
+        else:
+            raise StopIteration
+
+
+class Bag(object):
+    def __init__(self):
+        self.container = list()
+
+    def add(self, item):
+        self.container.append(item)
+
+    def __len__(self):
+        return len(self.container)
+
+    def __contains__(self, item):
+        return item in self.container
+
+    def remove(self, item):
+        assert item in self.container, "The item must be in the bag"
+        ind = self.container.index(item)
+        return self.container.pop(ind)
+
+    def __iter__(self):
+        return _BagIterator(self.container)
+
 
 class Project(object):
     def __init__(self, from_date, to_day, name):
@@ -95,10 +133,18 @@ class Project(object):
         self.to_date = to_day
         self.name = name
         self.description = None
+        self.tasks = Bag()
 
     def set_description(self, string):
         self.description = string
 
     def set_name(self, new_name):
         self.name = new_name
+
+    def add_task(self, new_task):
+        self.tasks.add(new_task)
+
+    def remove_task(self, task):
+        self.tasks.remove(task)
+
 
