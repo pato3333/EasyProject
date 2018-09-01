@@ -68,7 +68,7 @@ class Date(object):
         return name[self.day_number_week()]
 
     def __str__(self):
-        return "%02i/%02i/%04i\n" % (self._month, self._day, self._year)
+        return "%02i/%02i/%04i" % (self._month, self._day, self._year)
 
     def __eq__(self, other):
         return other.to_julian_day() == self.to_julian_day()
@@ -97,9 +97,9 @@ class Task(object):
         self.input_notes = notes
 
     def __str__(self):
-        record = "\n%s >>>>> '%s'\n" % (self.input_date, self.input_title)
-        description = "\n'%s'\n" % self.input_notes
-        return record + "-" * 60 + description
+        record = "%s\n%s\n" % (self.input_date, self.input_title)
+        description = "%s\n" % self.input_notes
+        return ".\n" + record + description
 
     def title(self):
         return self.input_title
@@ -170,18 +170,22 @@ class Project(object):
         return len(self.tasks)
 
     def __str__(self):
-        title = self.name + " <<<<<<<<<<<<<<" + "\n"
+        title = self.name + "\n"
+        note = self.description + "\n"
+        to_d = str(self.to_date) + "\n"
+        from_d = str(self.from_date) + "\n"
+
         if self.__len__() == 0:
-            task = "No tasks at all\n"
+            task = "None"
         else:
             task = self.print_task_all()
-        return title + task
+        return title + note + to_d + from_d + task
 
     def remove_task(self, task):
         self.tasks.remove(task)
 
     def print_task_all(self):
-        str_task = "Tasks:"
+        str_task = ""
         for x in self.tasks:
             str_task += str(x)
         return str_task
