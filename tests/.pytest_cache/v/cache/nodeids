@@ -1,7 +1,4 @@
 [
-  "test_date.py::TestDate::test_day_name",
-  "test_date.py::TestDate::test_day_number_week",
-  "test_date.py::TestDate::test_dif_day",
-  "test_date.py::TestDate::test_month_name",
-  "test_date.py::TestDate::test_print_julian"
+  "test_bag.py::TestBag::test_add",
+  "test_bag.py::TestBag::test_remove"
 ]
