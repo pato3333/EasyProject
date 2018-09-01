@@ -97,7 +97,7 @@ class Task(object):
         self.input_notes = notes
 
     def __str__(self):
-        record = "%s\n%s\n" % (self.input_date, self.input_title)
+        record = "%s\n%s\n" % (self.input_title, self.input_date)
         description = "%s\n" % self.input_notes
         return ".\n" + record + description
 
@@ -106,6 +106,13 @@ class Task(object):
 
     def date(self):
         return self.input_date
+
+    def notes(self):
+        return self.input_notes
+
+    def __eq__(self, other):
+        return self.input_title == other.input_title and self.input_date == other.input_date \
+               and self.input_notes == other.input_notes
 
 
 class _BagIterator(object):
@@ -154,7 +161,7 @@ class Project(object):
         self.from_date = from_date
         self.to_date = to_day
         self.name = name.upper()
-        self.description = None
+        self.description = ""
         self.tasks = Bag()
 
     def set_description(self, string):
@@ -212,3 +219,6 @@ class Project(object):
 
     def get_name(self):
         return self.name
+
+    def set_tasks(self, task_bag):
+        self.tasks = task_bag

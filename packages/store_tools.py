@@ -77,5 +77,7 @@ class ProjectReader(object):
         out_pro.to_date = self.file_ob.readline().strip()
         out_pro.tasks = self._read_task()
 
+        return out_pro
+
     def close(self):
         self.file_ob.close()
