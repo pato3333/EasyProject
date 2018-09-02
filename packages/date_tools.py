@@ -172,7 +172,7 @@ class Project(object):
         self.description = string
 
     def set_name(self, new_name):
-        self.name = new_name
+        self.name = new_name.upper()
 
     def add_task(self, new_task):
         self.tasks.add(new_task)
@@ -190,7 +190,7 @@ class Project(object):
             task = "None"
         else:
             task = self.print_task_all()
-        return title + note + to_d + from_d + task
+        return title + note + from_d + to_d + task
 
     def remove_task(self, task):
         self.tasks.remove(task)

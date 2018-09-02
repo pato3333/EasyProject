@@ -1,4 +1,14 @@
 from packages.date_tools import *
+from pathlib import Path
+
+
+def is_file(path):
+    file = Path(path)
+    return file.is_file()
+
+
+def name_to_path(name):
+    return "my_projects" + "/" + name.lower().replace(" ", "_") + ".txt"
 
 
 def string_to_date(string):

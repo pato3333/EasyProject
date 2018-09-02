@@ -6,7 +6,7 @@ class ProjectWriter(object):
         self.file_name = project.get_name().lower().replace(" ", "_")
         self.file_obj = None
         self.input_project = project
-        folder_name = "my_projects"  # folder name
+        folder_name = "my_projects"
         self.path = folder_name + "/" + self.file_name + ".txt"
 
         # create the folder if it's doesn't exist
