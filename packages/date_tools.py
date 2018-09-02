@@ -1,3 +1,6 @@
+from packages.store_tools import ProjectWriter
+
+
 def is_year_leap(year):
     if year % 4 == 0 and (year % 400 == 0 or year % 100 != 0):
         return True
@@ -156,6 +159,7 @@ class Bag(object):
 
 class Project(object):
     def __init__(self, from_date, to_day, name):
+
         assert from_date < to_day, "The dates are not valid"
 
         self.from_date = from_date
@@ -222,3 +226,13 @@ class Project(object):
 
     def set_tasks(self, task_bag):
         self.tasks = task_bag
+
+    def save(self):
+        """
+        Save project into a file
+        :return:
+        """
+        writer = ProjectWriter(self)
+        writer.open()
+        writer.save_project()
+        writer.close()
