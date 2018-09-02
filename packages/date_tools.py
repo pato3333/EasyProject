@@ -98,14 +98,22 @@ class Task(object):
         self.input_date = date
         self.input_title = title.upper()
         self.input_notes = notes
+        self.status = "To Do"  # status of the task
 
     def __str__(self):
         record = "%s\n%s\n" % (self.input_title, self.input_date)
         description = "%s\n" % self.input_notes
-        return ".\n" + record + description
+        return ".\n" + record + description + self.status + "\n"
 
     def title(self):
         return self.input_title
+
+    def do_status(self):
+        if self.status == "To Do":
+            self.status = "Do"
+
+    def set_status(self, status):
+        self.status = status
 
     def date(self):
         return self.input_date
@@ -115,7 +123,7 @@ class Task(object):
 
     def __eq__(self, other):
         return self.input_title == other.input_title and self.input_date == other.input_date \
-               and self.input_notes == other.input_notes
+               and self.input_notes == other.input_notes and self.status == other.status
 
 
 class _BagIterator(object):

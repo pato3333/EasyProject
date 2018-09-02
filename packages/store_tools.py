@@ -43,6 +43,7 @@ class TaskRecord(object):
         self.name = None
         self.notes = None
         self.date = None
+        self.status = None
 
 
 class ProjectReader(object):
@@ -60,6 +61,7 @@ class ProjectReader(object):
                 task_ins.name = self.file_ob.readline().strip()
                 task_ins.date = self.file_ob.readline().strip()
                 task_ins.notes = self.file_ob.readline().strip()
+                task_ins.status = self.file_ob.readline().strip()
                 my_tasks.append(task_ins)
                 my_line = self.file_ob.readline().strip()
             else:

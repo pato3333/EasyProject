@@ -28,7 +28,9 @@ def task_record_to_task(taskRecord):
     :param taskRecord
     :return: task data type
     """
-    return Task(string_to_date(taskRecord.date), taskRecord.name, taskRecord.notes)
+    task_r = Task(string_to_date(taskRecord.date), taskRecord.name, taskRecord.notes)
+    task_r.set_status(taskRecord.status)
+    return task_r
 
 
 def task_record_list_to_task_bag(task_record_list):
