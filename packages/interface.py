@@ -66,3 +66,6 @@ class ProjectConstructor(object):
     def add_task(self):
         task_co = TaskConstructor()
         self.project.add_task(task_co.get_task())
+
+    def get_project(self):
+        return self.project

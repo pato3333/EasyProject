@@ -4,7 +4,7 @@ from packages.interface import ProjectConstructor
 
 class TestProjectConstructor(TestCase):
     def test_get_project(self):
-        cont = ProjectConstructor("Calendar Program 2.0")
+        cont = ProjectConstructor("Calendar Program")
         proj = cont.get_project()
         proj.set_name("Calendar Program 3.0")
         proj.save()

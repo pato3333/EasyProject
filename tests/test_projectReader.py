@@ -23,5 +23,5 @@ class TestProjectReader(TestCase):
         reader.close()
 
         self.assertEqual(records.name, "CALENDAR PROGRAM")
-        self.assertEqual(records.to_date, "09/01/2018")
+        self.assertEqual(records.to_date, "09/12/2018")
         self.assertEqual(2, len(records.tasks))
